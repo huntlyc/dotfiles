@@ -1,0 +1,41 @@
+#general user stuff
+set imap_user = "huntly.cameron@gmail.com"
+set imap_pass = "password"
+
+set smtp_url = "smtp://huntly.cameron@smtp.gmail.com:587"
+set smtp_pass = "password"
+set from = "huntly.cameron@gmail.com"
+set realname = "Huntly Cameron"
+
+#Set IMAP bits
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Google Mail]/Drafts"
+
+set copy=yes
+set record="+[Google Mail]/Sent Mail"
+
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certficates
+
+set move = no
+
+set timeout=15
+set mail_check=60
+
+#General stuff
+set sort = "threads"
+set sort_aux = "last-date-received"
+set imap_check_subscribed
+set include
+set auto_tag = yes
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+alternative_order text/plain text/html *
+auto_view text/html
+
+bind index "G" imap-fetch-mail
+
