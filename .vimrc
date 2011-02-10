@@ -50,7 +50,7 @@ let mapleader=","
 "Use ,s to start a spell check, hit it again to stop
 nmap <leader>s :setlocal spell! spelllang=en_gb<CR>
 set spellfile=~/.vim/dict.add
-set pastetoggle=<F11>
+set pastetoggle=<F2>
 
 "Set up window/splits key mapping for ease of use
 map <c-j> <c-w>j
