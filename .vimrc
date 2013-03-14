@@ -30,7 +30,7 @@ set nobackup
 "For some things I personally prefer a 2 space indent instead of 4
 autocmd BufRead,BufNewFile *.xml  set tabstop=2
 autocmd BufRead,BufNewFile *.xml  set shiftwidth=2
-autocmd BufRead,BufNewFile *.js  set tabstop=2
+autocmd BufRead,BufNewFile *.json  set tabstop=2
 autocmd BufRead,BufNewFile *.json  set shiftwidth=2
 autocmd BufRead,BufNewFile *.css  set tabstop=2
 autocmd BufRead,BufNewFile *.css  set shiftwidth=2
