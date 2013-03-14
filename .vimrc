@@ -4,13 +4,15 @@ set nocompatible "Not entirely sure what this does, but seen it about in other e
 "You don't need a colour scheme, but I like this one :)
 colorscheme evening
 
+"Turn on syntax highlighting and smart-indent
+syntax on
+set smartindent
+
 "Show the status line and suler
-set statusline=%{GitBranchInfoString()}\ [%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%* 
+set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%* 
 set laststatus=2
 
 set ruler
-
-
 
 "Get rid of tabs, they're the devils work
 set autoindent
@@ -25,11 +27,11 @@ set title
 set nobackup
 
 """ Indents for diff files
-"For html & css I prefer a 2 space indent
-autocmd BufRead,BufNewFile *.html set tabstop=2
-autocmd BufRead,BufNewFile *.html set shiftwidth=2
+"For some things I personally prefer a 2 space indent instead of 4
 autocmd BufRead,BufNewFile *.xml  set tabstop=2
 autocmd BufRead,BufNewFile *.xml  set shiftwidth=2
+autocmd BufRead,BufNewFile *.js  set tabstop=2
+autocmd BufRead,BufNewFile *.json  set shiftwidth=2
 autocmd BufRead,BufNewFile *.css  set tabstop=2
 autocmd BufRead,BufNewFile *.css  set shiftwidth=2
 
