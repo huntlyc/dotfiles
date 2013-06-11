@@ -1,0 +1,26 @@
+//  User Settings for sublime text 3 
+//  ================================
+//  https://github.com/huntlyc/dotfiles/Preferences.sublime-settings
+//  Do what you like.  This setup is geared towards Web Development.
+{
+    "color_scheme": "Packages/Color Scheme - Default/Solarized (Light).tmTheme",    
+	"font_size": 10,    
+    //Spaces for tabs, tab stops, no detect - force, auto trim EOL spaces
+	"detect_indentation": false,
+	"translate_tabs_to_spaces": true,
+    "use_tab_stops": true,
+    "trim_trailing_white_space_on_save": true,
+    //Not so useful these days, but still a nice guide
+    "rulers": [80],
+    //I'm always pressing ctrl+c instead of ctrl+v so this is a big time save!!
+    "copy_with_empty_selection": false,    
+    //Other misc
+    "always_show_minimap_viewport": true,
+    "highlight_line": true,
+	"tree_animation_enabled": false,
+    //One day...
+	"ignored_packages":
+	[
+		"Vintage"
+	]
+}
