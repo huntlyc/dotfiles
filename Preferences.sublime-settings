@@ -21,5 +21,6 @@
 	"translate_tabs_to_spaces": true,
 	"tree_animation_enabled": false,
 	"trim_trailing_white_space_on_save": true,
-	"use_tab_stops": true
+	"use_tab_stops": true,
+	"highlight_modified_tabs": true
 }
