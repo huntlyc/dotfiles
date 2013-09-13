@@ -1,0 +1,5 @@
+//User Keymap settings
+//C:\Users\$USERNAME\AppData\Roaming\Sublime Text 3\Packages\User\
+[
+    { "keys": ["ctrl+alt+r"], "command": "refresh_folder_list" },
+]
