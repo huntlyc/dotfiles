@@ -22,5 +22,6 @@
 	"tree_animation_enabled": false,
 	"trim_trailing_white_space_on_save": true,
 	"use_tab_stops": true,
-	"highlight_modified_tabs": true
+	"highlight_modified_tabs": true,
+	"detect_indentation": false
 }
