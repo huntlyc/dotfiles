@@ -57,7 +57,10 @@ $color = "#9ECE9E\n";
 if ($status eq 'Discharging') {
     if ($percent < 5){
         exit(33);
-    }elsif ($percent < 25) {
+    }elsif ($percent <= 10) {
+        $full_text = "  $full_text";
+		$color = "#e89393\n";
+    }elsif ($percent <= 25) {
         $full_text = "  $full_text";
 		$color = "#e89393\n";
 	} elsif ($percent <= 50) {
@@ -69,7 +72,8 @@ if ($status eq 'Discharging') {
 	}else{
         $full_text = "  $full_text";
     }
-
+}else{
+    $full_text = "  $full_text";
 }
 
 # print text
