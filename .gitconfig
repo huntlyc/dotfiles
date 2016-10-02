@@ -12,3 +12,5 @@
     branch-name = "!git rev-parse --abbrev-ref HEAD"
     po = "!git push -u origin $(git branch-name)"
     pr = "!git pull --rebase origin $(git branch-name)"
+[core]
+	editor = vim
