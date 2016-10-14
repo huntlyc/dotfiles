@@ -16,6 +16,8 @@ set $tag1 ""
 set $tag2 "`"
 #choons
 set $tag3 ""
+#generic 
+set $tag4 ""
 
 #colours
 set $cblack "#1f1f1f"
@@ -24,6 +26,8 @@ set $cblackLighter "#333333"
 set $cwhite "#dcdccc"
 set $corange "#dfaf8f" 
 set $corangeDarker "#b58e74" 
+set $cfwod "#671f2d"
+set $cfwo "#f18233"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -108,7 +112,7 @@ bindsym $mod+a focus parent
 bindsym $mod+1 workspace $tag1
 bindsym $mod+2 workspace $tag2
 bindsym $mod+3 workspace $tag3
-bindsym $mod+4 workspace number 4
+bindsym $mod+4 workspace $tag4
 bindsym $mod+5 workspace number 5
 bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
@@ -120,7 +124,7 @@ bindsym $mod+0 workspace number 10
 bindsym $mod+Shift+1 move container to workspace $tag1
 bindsym $mod+Shift+2 move container to workspace $tag2
 bindsym $mod+Shift+3 move container to workspace $tag3
-bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+4 move container to workspace $tag4
 bindsym $mod+Shift+5 move container to workspace number 5
 bindsym $mod+Shift+6 move container to workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7
@@ -172,9 +176,9 @@ bar {
     background $cblack
     statusline $cwhite
     # color class <border> <bg> <text>
-    focused_workspace $cblack $cblack $cwhite
-    active_workspace $cblack $cblack  $corange
-    inactive_workspace $cblack $cblack $cblackLighter
+    focused_workspace $cblack $cblack $cfwo
+    active_workspace $cblack $cblack $corange
+    inactive_workspace $cblack $cblack $corangeDarker
     urgent_workspace $corange $corange $cblack
   }
 }
@@ -187,7 +191,7 @@ bar {
 #set keybindings
 bindsym $mod+ctrl+e exec subl
 bindsym $mod+ctrl+w exec chromium
-bindsym $mod+ctrl+l exec i3lock -c000000
+bindsym $mod+ctrl+l exec i3lock -b -f -c1f1f1f
 
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
@@ -204,7 +208,9 @@ bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
 #exec subl
 #exec thunderbird
 #exec skype
-exec i3-sensible-terminal
+exec --no-startup-id xsetroot -solid $corange
+exec sh ~/.fehbg & 
+exec conky -c ~/.conkyrc &
 
 client.focused $corange $corange $cblack $cblack
 client.focused_inactive $corangeDarker $corangeDarker $cblack $cblack

@@ -1,0 +1,42 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+
+conky.config = { 
+	color0 = '#671f2d',
+	color1 = '#d55b32',
+    alignment = 'bottom_right',
+    background = true,
+    default_color = '#F7F7F7',
+    draw_outline = false,
+    draw_borders = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'Inconsolata:size=14',
+
+    own_window = true,
+    own_window_type = 'override',
+
+    own_window_transparent = true,
+	double_buffer = true,
+    gap_x = 10,
+    gap_y = 40,
+}
+
+conky.text = [[
+${color0}DATE:   ${color} ${color1}${time %A %d %B %Y}${color}
+${color0}UPTIME: ${color} ${color1}$uptime${color}
+${color0}KERN:   ${color} ${color1}$kernel${color}
+${color0}UPDATES:${color} ${color1}${execpi 3600 checkupdates | wc -l}${color} 
+${color0}CPU:    ${color} ${color1}${cpubar 3,100}   $cpu% ${acpitemp}C${color}
+${color0}MEM:    ${color} ${color1}${membar 3,100}   $memperc% $mem/$memmax${color} 
+
+${color0}TOP CPU:${color}
+${color1} - ${top name 1}${top_mem cpu 1}${color}
+${color1} - ${top name 2}${top cpu 2}${color}
+${color1} - ${top name 3}${top cpu 3}${color}
+
+${color0}TOP MEM:${color}
+${color1} - ${top name 1}${top_mem mem 1}${color}
+${color1} - ${top name 2}${top mem 2}${color}
+${color1} - ${top name 3}${top mem 3}${color}
+]]
+

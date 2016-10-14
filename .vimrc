@@ -56,11 +56,22 @@ set smartcase
 
 nmap <silent> <c-N> :silent noh<CR>
 
+let g:airline_powerline_fonts = 1
 " Add optional packages.
-"
 " The matchit plugin makes the % command work better, but it is not backwards
 " compatible.
 if has('syntax') && has('eval')
   packadd matchit
 endif
+
+call plug#begin('~/.vim/plugged')
+" Make sure you use single quotes
+
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'vim-airline/vim-airline' 
+" Add plugins to &runtimepath
+call plug#end()
+
+
 

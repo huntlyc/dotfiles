@@ -1,12 +1,12 @@
-xterm*faceName: Inconsolata
-xterm*faceSize: 12
+xterm*faceName: Roboto Mono for Powerline
+xterm*faceSize: 12   
 xterm*eightBitInput: false
 !URxvt plugins - clipboard and clickable urls
 URxvt.perl-ext-common: default,matcher,selection-to-clipboard
 !set bell
 URxvt.urgentOnbell: true
 !set font
-URxvt.font: xft:Inconsolata:size=13
+URxvt.font: xft:Roboto Mono for Powerline:size=12
 
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
