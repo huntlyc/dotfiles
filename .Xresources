@@ -92,3 +92,19 @@ XTerm*colorUL        : _colorUL
 XTerm*foreground     : _foreground
 XTerm*background     : _background
 XTerm*cursorColor    : _cursorColor
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #000d18, argb:0000d18, argb:5a000d18
+rofi.color-normal: #000d18, #dfaf8f, #000d18, #1f1f1f, #dfaf8f
+rofi.color-active: #000d18, #9ece9e, #000d18, #1f1f1f, #9ece9e
+rofi.color-urgent: #000d18, #e89393, #000d18, #1f1f1f, #e89393
+rofi.lines: 5
+rofi.font: Roboto Mono for Powerline 14
+rofi.location: 2
+!rofi.width: 1920
+rofi.yoffset: 430
+rofi.case-sensitive: false

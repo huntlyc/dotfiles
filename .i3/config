@@ -56,7 +56,10 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
+
+bindsym $mod+p exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i -p " " -show run'
+
 
 # change focus
 bindsym $mod+h focus left
