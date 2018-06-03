@@ -7,6 +7,7 @@ colorscheme slate
 
 "Turn on syntax highlighting and smart-indent
 syntax on
+
 set autoindent
 set smartindent
 set backspace=indent,eol,start  " more powerful backspacing
@@ -30,7 +31,7 @@ set nobackup
 
 """ Misc
 "Auto change the directory to the current file location
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
@@ -40,9 +41,8 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 let mapleader=","
 
 "Use ,s to start a spell check, hit it again to stop
-nmap <leader>s :setlocal spell! spelllang=en_gb<CR>
 set spellfile=~/.vim/dict.add
-set pastetoggle=<F2>
+" setp pastetoggle=<F2>
 
 "Set up window/splits key mapping for ease of use
 map <c-j> <c-w>j
@@ -56,7 +56,6 @@ set incsearch
 set ignorecase
 set smartcase
 
-nmap <silent> <c-N> :silent noh<CR>
 
 let g:airline_powerline_fonts = 1
 " Add optional packages.
@@ -84,9 +83,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tomasr/molokai'
-
+Plug 'mileszs/ack.vim'
+Plug '~/code/wp-db-switch.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'lifepillar/vim-solarized8'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -96,19 +98,40 @@ colorscheme molokai
 let g:molokai_original = 1
 " let g:rehash256 = 1
 
+" set background=light
+" colorscheme solarized8
+
 
 "TComment config - ,cc to toggle
 noremap <silent> <Leader>cc :TComment<CR>
 
 "CTRP config
 nnoremap <silent> <Leader>f :CtrlP<CR>
+let g:ctrlp_extensions = ['wpdbswitch']
 
+"turn off search highlighting with ,.
+nmap <silent> <Leader>. :silent noh<CR>
 
+" toggle spell check
+nmap <Leader>s :setlocal spell! spelllang=en_gb<CR>
+
+" attempt to figure out which media query we're in
+nmap <Leader>q :call ReportMediaQuery()<CR>
+
+" toggle paste mode
+nmap <Leader>p :setlocal paste!<CR>
 
 "let g:lightline = { 'colorscheme': 'solarized', }               "vim-lightline
 set laststatus=2                                                "vim-lightline
 set noshowmode                                                  "vim-lightline
 
+
+" st filetype to html for indent, set syntax back to php
+function! ConfigPHPFT()
+    set ft=html
+    set syntax=php
+endfunction
+autocmd FileType php call ConfigPHPFT()
 
 
 "fn to minify js or css - uses cleancss and uglify binaries (systemwide node
@@ -184,9 +207,9 @@ endfunction
 
 "
 " call our minification on save
-" autocmd FileWritePost,BufWritePost *.js :call Js_compress()
-" autocmd FileWritePost,BufWritePost *.css :call Css_compress()
-" autocmd FileWritePost,BufWritePost *.scss :call Sass_compile()
+autocmd FileWritePost,BufWritePost *.js :call Js_compress()
+autocmd FileWritePost,BufWritePost *.css :call Css_compress()
+autocmd FileWritePost,BufWritePost *.scss :call Sass_compile()
 
 
 " get rid of all trailing whitespace before end of buffer on before buffer
@@ -204,7 +227,6 @@ function! ReportMediaQuery()
     echo l:lineContent
     echohl None
 endfunction
-nmap <leader>q :call ReportMediaQuery()<CR>
 
 "Highlights trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -217,6 +239,6 @@ autocmd BufWinLeave * call clearmatches()
 
 " emmet config
 let g:user_emmet_install_global = 0
-autocmd FileType php,html,css EmmetInstall
+autocmd FileType php,html,eco,css,scss EmmetInstall
 " set expand key map to ',,'
 let g:user_emmet_leader_key=','
