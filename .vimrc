@@ -7,6 +7,7 @@ colorscheme slate
 
 "Turn on syntax highlighting and smart-indent
 syntax on
+set number
 
 set autoindent
 set smartindent
@@ -89,6 +90,7 @@ Plug '~/code/wp-db-switch.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'lifepillar/vim-solarized8'
+" Plug 'w0rp/ale'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -207,9 +209,9 @@ endfunction
 
 "
 " call our minification on save
-autocmd FileWritePost,BufWritePost *.js :call Js_compress()
-autocmd FileWritePost,BufWritePost *.css :call Css_compress()
-autocmd FileWritePost,BufWritePost *.scss :call Sass_compile()
+" autocmd FileWritePost,BufWritePost *.js :call Js_compress()
+" autocmd FileWritePost,BufWritePost *.css :call Css_compress()
+" autocmd FileWritePost,BufWritePost *.scss :call Sass_compile()
 
 
 " get rid of all trailing whitespace before end of buffer on before buffer
@@ -242,3 +244,10 @@ let g:user_emmet_install_global = 0
 autocmd FileType php,html,eco,css,scss EmmetInstall
 " set expand key map to ',,'
 let g:user_emmet_leader_key=','
+
+"autocmd FileType $type :iabbrev <buffer> $match $replace [$additional_commands]
+
+"type <? to get <?php [cursor]; ?>
+autocmd FileType php :iabbrev <buffer> <? <?php; ?><left><left><left><left>
+
+
