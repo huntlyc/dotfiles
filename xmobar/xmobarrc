@@ -1,0 +1,37 @@
+Config {
+    font = "xft:SauceCodePro:size=12:semibold:antialias=true"
+    , bgColor = "#24273a"
+    , fgColor = "#c5cff5"
+    , position = Top
+    , allDesktops = True,
+    , overrideRedirect = True
+    , lowerOnStart = False
+    , border = BottomB
+    , borderColor = "#6E6C7E"
+    , commands = [ 
+        -- battery monitor
+        Run Battery        [ "--template" , "<acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "#F28FAD"
+                             , "--normal"   , "#F8BD96"
+                             , "--high"     , "#ABE9B3"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% (<timeleft>)"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                             ] 50
+
+        -- time and date indicator 
+        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
+        , Run Date           "<fc=#c5cff5>%F (%a) %T</fc>" "date" 10
+        , Run StdinReader
+        ]
+    , sepChar = "%"
+    , alignSep = "}{"
+    , template = "%StdinReader% }{ %battery% | %date%"
+}
