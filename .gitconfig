@@ -1,16 +1,20 @@
 [user]
     name = Huntly Cameron
     email = huntly.cameron@gmail.com
+
 [alias]
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
     co = clone
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     lg = log --stat
     lgg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     st = status
     aa = add --all
     ci = commit
     cia = commit -a
-    branch-name = "!git rev-parse --abbrev-ref HEAD"
     po = "!git push -u origin $(git branch-name)"
     pr = "!git pull --rebase origin $(git branch-name)"
 [core]
-	editor = vim
+	editor = nvim
+
+
