@@ -1,0 +1,79 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.detectIndentation": false,
+    "vim.camelCaseMotion.enable": true,
+    "vim.easymotion": true,
+    "vim.enableNeovim": true,
+    "vim.leader": " ",
+    "vim.showMarksInGutter": true,
+    "settingsSync.ignoredExtensions": [
+        "ms-vscode.cpptools"
+    ],
+    "prettier.printWidth": 120,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "all",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.fontSize": 15,
+    "workbench.sideBar.location": "right",
+    "vim.statusBarColors.commandlineinprogress": "#007acc",
+    "prettier.configPath": ".prettierrc",
+    "prettier.requireConfig": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "editor.formatOnSave": true,
+    "tabnine.experimentalAutoImports": true,
+    "es6-css-minify.minifyOnSave": "yes",
+    "php.validate.executablePath": "/opt/homebrew/bin/php",
+    "intelephense.environment.includePaths": [
+        "/Users/huntlycameron/Local Sites/barewp/app/public",
+        "C:/Users/huntly/Local Sites/gutenbergstufflocal/app/public"
+    ],
+    "intelephense.format.braces": "k&r",
+    "intelephense.format.enable": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "python.analysis.completeFunctionParens": true,
+    "editor.tabCompletion": "on",
+    "editor.acceptSuggestionOnEnter": "off",
+    "vim.neovimPath": "/opt/homebrew/bin/nvim",
+    "vim.highlightedyank.enable": true,
+    "explorer.confirmDelete": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "prettier.documentSelectors": [
+        "*.js"
+    ],
+    "[handlebars]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "[Catppuccin]": {
+            "tab.activeBorderTop": "#89dceb",
+            "tab.inactiveBackground": "#1e1e2e",
+            "tab.activeBackground": "#302d41"
+        }
+    },
+    "workbench.colorTheme": "Catppuccin",
+    "editor.lineNumbers": "relative"
+}
