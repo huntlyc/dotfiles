@@ -1,0 +1,24 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+cmd+=",
+        "command": "wwm.aligncode",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+y",
+        //        "when": "neovim.recording || editorTextFocus && neovim.init && neovim.mode != 'insert'",
+        "command": "toggle",
+        "args": {
+            "id": "line-numbers",
+            "value": [
+                {
+                    "editor.lineNumbers": "relative"
+                },
+                {
+                    "editor.lineNumbers": "on"
+                }
+            ]
+        }
+    },
+]
