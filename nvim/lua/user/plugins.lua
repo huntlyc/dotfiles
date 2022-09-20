@@ -6,9 +6,12 @@
 local packer = require 'lib.packer-init'
 
 packer.startup(function()
+
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use 'ThePrimeagen/harpoon'
     -- misc
+    use 'github/copilot.vim'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
     use {
@@ -23,13 +26,15 @@ packer.startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+    --use { 'fgheng/winbar.nvim' }
+    use 'ray-x/lsp_signature.nvim'
     use {
         "williamboman/nvim-lsp-installer",
         "neovim/nvim-lspconfig",
         config = function()
             require("nvim-lsp-installer").setup {}
         end
-    } 
+    }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -41,8 +46,9 @@ packer.startup(function()
         end
     }
 
+
     use {
-        'catppuccin/nvim', 
+        'catppuccin/nvim',
         as = 'catppuccin',
         config = function()
             require('catppuccin').setup{}
@@ -59,6 +65,8 @@ packer.startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
+    use 'sbdchd/neoformat'
+
     -- telescope
     use {
         'nvim-telescope/telescope.nvim',
