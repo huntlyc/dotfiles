@@ -1,0 +1,7 @@
+vim.keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", {desc = "Toggle breakpoint"})
+vim.keymap.set("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition:'))<cr>", {desc = "Toggle conditional break"})
+vim.keymap.set("n", "<leader>dlp", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point msg'))<cr>", {desc = "Log point messsage"})
+vim.keymap.set("n", "dc", "<cmd>lua require'dap'.continue()<cr>", {desc = "DAP start/continue"})
+vim.keymap.set("n", "<leader>dT", "<cmd>lua require'dap'.terminate()<cr>", {desc = "DAP start/continue"})
+vim.keymap.set("n", "do", "<cmd>lua require'dap'.step_over()<cr>", {desc = "DAP step over"})
+vim.keymap.set("n", "di", "<cmd>lua require'dap'.step_into()<cr>", {desc = "DAP step into"})
