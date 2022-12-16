@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.keymap.set('n', '<leader>l', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader><leader>l', '<cmd>nohlsearch<CR>')
 -- go to non-existant file
 vim.keymap.set('', 'gf', '<cmd>edit <cfile><CR>')
 
@@ -17,8 +17,6 @@ vim.keymap.set('n', '<leader>ve', '<cmd>e /home/huntly/.config/nvim/init.lua<CR>
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>')
 vim.keymap.set('n', '<leader>c', '<cmd>clo<CR>')
-vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>')
-vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<CR>')
 vim.keymap.set('n', "<leader>y", "\"+y")
 vim.keymap.set('v', "<leader>y", "\"+y")
 vim.keymap.set('n', "<leader>Y", "\"+Y")
@@ -29,8 +27,16 @@ vim.keymap.set('n', "J", "mzJ`z")
 vim.keymap.set('n', "<C-d>", "<C-d>zz")
 vim.keymap.set('n', "<C-u>", "<C-u>zz")
 
+vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<leader>[', '<cmd>bnext<CR>')
+
+vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<CR>')
+vim.keymap.set('n', '<leader>]', '<cmd>bprevious<CR>')
+
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set('n', '<leader>=', '<cmd>Neoformat<CR>')
 
 -- packer
 vim.keymap.set('n', '<leader>ps', '<cmd>PackerSync<CR>')
@@ -38,29 +44,18 @@ vim.keymap.set('n', '<leader>ps', '<cmd>PackerSync<CR>')
 -- vimtree
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
+-- lazygit
+vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>")
+
 -- Telescope FTFW
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope git_files<cr>") -- respects .gitignore
-vim.keymap.set("n", "<leader>fF", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope git_files<cr>") -- files tracked in git (good for ignoring node_modules)
+vim.keymap.set("n", "<leader>fF", "<cmd>Telescope find_files<cr>") -- finds everythign regardless of git status
 vim.keymap.set("n", "<leader>f*", "<cmd>Telescope grep_string<cr>")
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>fm", "<cmd>Telescope marks<cr>")
 vim.keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>")
 vim.keymap.set("n", "<leader>f.", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-
--- LSP && Telescope
-local opts = { buffer = 0 }
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, opts)
-vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts)
-
-vim.keymap.set("n", "<leader>gr", vim.lsp.buf.rename, opts)
-
-vim.keymap.set("n", "<leader>gb", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<leader>gp", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "<leader>gtr", "<cmd>Telescope lsp_references<cr>")
-vim.keymap.set("n", "<leader>gl", "<cmd>Telescope diagnostics<cr>")
-
 
 -- harpoon keymaps
 vim.keymap.set("n", "<leader>hw", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")

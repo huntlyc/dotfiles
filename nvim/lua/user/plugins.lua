@@ -6,14 +6,21 @@
 local packer = require 'lib.packer-init'
 
 packer.startup(function()
-
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    use 'ThePrimeagen/harpoon'
+
+
+    -- game
+    use 'ThePrimeagen/vim-be-good'
+
+
     -- misc
-    use 'github/copilot.vim'
+    use 'ThePrimeagen/harpoon'
+    use 'kdheepak/lazygit.nvim'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
+    use 'numToStr/Comment.nvim'
+
     use {
         'editorconfig/editorconfig-vim',
         as = 'editorconfig',
@@ -26,7 +33,8 @@ packer.startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
-    --use { 'fgheng/winbar.nvim' }
+    use 'nvim-treesitter/nvim-treesitter-context'
+
     use 'ray-x/lsp_signature.nvim'
     use {
         "williamboman/nvim-lsp-installer",
@@ -65,6 +73,7 @@ packer.startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
+    use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
     use 'sbdchd/neoformat'
 
     -- telescope

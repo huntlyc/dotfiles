@@ -13,63 +13,43 @@ vim.opt.splitbelow = true
 vim.opt.scrolloff = 3
 vim.opt.confirm = true
 
+
 -- death to trailing whitespace...
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
 })
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.css,*.scss,*.js" },
-  command = [[Neoformat]],
-})
+
+--vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+--  pattern = { "*.css,*.scss,*.js" },
+--  command = [[Neoformat]],
+--})
+
 require('telescope').load_extension('fzf')
 
---[[
-require('winbar').setup({
-    enabled = true,
 
-    show_file_path = true,
-    show_symbols = true,
-
-    colors = {
-        path = '', -- You can customize colors like #c946fd
-        file_name = '',
-        symbols = '',
-    },
-
-    icons = {
-        file_icon_default = '',
-        seperator = '>',
-        editor_state = '●',
-        lock_icon = '',
-    },
-
-    exclude_filetype = {
-        'help',
-        'startify',
-        'dashboard',
-        'packer',
-        'neogitstatus',
-        'NvimTree',
-        'Trouble',
-        'alpha',
-        'lir',
-        'Outline',
-        'spectre_panel',
-        'toggleterm',
-        'qf',
-    }
-})
--- /]]--
 
 -- lsp config
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach = function(client, bufnr)
-    -- Mappings.
+    -- LSP && Telescope mappings
     local opts = { noremap = true, silent = true }
     vim.api.nvim_buf_set_keymap(bufnr,"n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gg", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gb", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gtr", "<cmd>Telescope lsp_references<cr>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr,"n", "<leader>gl", "<cmd>Telescope diagnostics<cr>", opts)
+
     require "lsp_signature".on_attach(signature_setup, bufnr)  -- Note: add in lsp client on-attach
+
 end
+
+
 
 require'lspconfig'.rust_analyzer.setup{
     capabilities = capabilities,
@@ -87,8 +67,17 @@ require'lspconfig'.cssls.setup {
 }
 
 require'lspconfig'.emmet_ls.setup {
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less','php' },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
 }
 
 
@@ -99,9 +88,10 @@ require'lspconfig'.intelephense.setup{
     init_options = {
         licenceKey = os.getenv('INTELEPHENSELICENCE'),
     },
-    filetypes = { "php", "phtml", "html", "module", "inc" },
+    filetypes = { "php", "phtml" },
     settings = {
         intelephense = {
+            maxMemory = 4096,
             stubs = {
                 "bcmath",
                 "bz2",
@@ -162,7 +152,10 @@ require'lspconfig'.intelephense.setup{
                 "wordpress-globals",
             },
             environment = {
-              includePaths = '/Users/huntlycameron/.composer/vendor/php-stubs'
+              includePaths = {
+                  '/Users/huntlycameron/.composer/vendor/php-stubs',
+                  '/Users/huntlycameron/code/wordpress'
+              }
             },
             files = {
                 maxSize = 5000000;
@@ -199,12 +192,15 @@ vim.opt.completeopt={"menu","menuone","noselect"}
     }),
 
     sources = cmp.config.sources({
+      { name = 'cmp_tabnine' },
       { name = 'nvim_lsp' },
       { name = 'luasnip' }, -- For luasnip users.
+
     }, {
       { name = 'buffer' },
     })
   })
+
 
 --[[-- php file autocmd
 local php_cmds = vim.api.nvim_create_augroup("PHPFixes", {clear = false});
@@ -221,3 +217,24 @@ vim.api.nvim_create_autocmd("BufEnter", {
 ]]--
 
 
+
+
+local tabnine = require('cmp_tabnine.config')
+
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = '..',
+	ignored_file_types = {
+		-- default is not to ignore
+		-- uncomment to ignore in lua:
+		-- lua = true
+	},
+	show_prediction_strength = false
+})
+
+
+
+require('Comment').setup()
