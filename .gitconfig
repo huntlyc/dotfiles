@@ -1,10 +1,19 @@
 [user]
-    name = Huntly Cameron
-    email = huntly.cameron@gmail.com
-
+	email = huntly@strutdigital.co.uk
+	name = Huntly
+	signingKey = ""
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+	template = /Users/huntlycameron/.stCommitMsg
+[tag]
+	forceSignAnnotated = false
 [alias]
     branch-name = "!git rev-parse --abbrev-ref HEAD"
-    co = clone
+    br = checkout -b
+    cl = clone
+    co = checkout
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     lg = log --stat
     lgg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
@@ -15,6 +24,29 @@
     po = "!git push -u origin $(git branch-name)"
     pr = "!git pull --rebase origin $(git branch-name)"
 [core]
-	editor = nvim
+	excludesfile = /Users/huntlycameron/.gitignore_global
+    pager = delta
+[difftool "sourcetree"]
+	cmd = /opt/homebrew/bin/meld\n $LOCAL $REMOTE
+	path = 
+[mergetool "sourcetree"]
+	cmd = /opt/homebrew/bin/meld\n $LOCAL $BASE $REMOTE --auto-merge --output=$MERGED\n
+	trustExitCode = true
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
 
 
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
