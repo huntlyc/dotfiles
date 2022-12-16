@@ -80,6 +80,7 @@ packer.startup(function()
     use 'hrsh7th/nvim-cmp'
     use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
     use 'sbdchd/neoformat'
+    use 'mbbill/undotree'
 
     -- telescope
     use {
