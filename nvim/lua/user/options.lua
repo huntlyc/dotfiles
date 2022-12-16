@@ -63,7 +63,7 @@ require('winbar').setup({
 -- /]]--
 
 -- lsp config
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach = function(client, bufnr)
     -- Mappings.
     local opts = { noremap = true, silent = true }
@@ -72,6 +72,15 @@ local on_attach = function(client, bufnr)
 end
 
 require'lspconfig'.rust_analyzer.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.gopls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+require'lspconfig'.golangci_lint_ls.setup{
     capabilities = capabilities,
     on_attach = on_attach,
 }
@@ -201,10 +210,32 @@ vim.opt.completeopt={"menu","menuone","noselect"}
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip' }, -- For luasnip users.
+      { name = 'cmp_tabnine' },
+
     }, {
       { name = 'buffer' },
     })
   })
+
+
+
+  local tabnine = require('cmp_tabnine.config')
+
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = '..',
+	ignored_file_types = {
+		-- default is not to ignore
+		-- uncomment to ignore in lua:
+		-- lua = true
+	},
+	show_prediction_strength = false
+
+})
+
 
 --[[-- php file autocmd
 local php_cmds = vim.api.nvim_create_augroup("PHPFixes", {clear = false});
@@ -221,3 +252,19 @@ vim.api.nvim_create_autocmd("BufEnter", {
 ]]--
 
 
+require("nvim-dap-virtual-text").setup();
+require("dap-go").setup();
+require("dapui").setup();
+
+local wk = require'which-key'
+wk.setup()
+
+wk.register({
+  ["<leader>b"] = { name = "+buffers" },
+  ["<leader>d"] = { name = "+debug" },
+  ["<leader>f"] = { name = "+file" },
+  ["<leader>g"] = { name = "+goto" },
+  ["<leader>h"] = { name = "+harpoon" },
+  ["<leader>p"] = { name = "+packer" },
+  ["<leader>v"] = { name = "+nvimconf" },
+})

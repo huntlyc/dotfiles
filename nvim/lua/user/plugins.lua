@@ -10,6 +10,17 @@ packer.startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'ThePrimeagen/harpoon'
+
+    -- debug via DAP
+    use 'mfussenegger/nvim-dap'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    -- dap lang plugs
+    use 'leoluz/nvim-dap-go'
+    use 'folke/which-key.nvim'
+
+
+
     -- misc
     use 'github/copilot.vim'
     use 'tpope/vim-fugitive'
@@ -65,6 +76,7 @@ packer.startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
+ 	use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
     use 'sbdchd/neoformat'
 
     -- telescope
