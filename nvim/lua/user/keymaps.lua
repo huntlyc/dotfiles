@@ -2,19 +2,14 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.keymap.set('n', '<leader>l', '<cmd>nohlsearch<CR>', {desc = "Stop highlighting search term"})
--- go to non-existant file
 vim.keymap.set('', 'gf', '<cmd>edit <cfile><CR>', {desc = "Go to file (create if doesn't exist)"})
 
--- reselect visual selection after indent change
 vim.keymap.set('v', '<', '<gv', {desc = "Unindent visual selection, keeping visual selection"})
 vim.keymap.set('v', '>', '>gv', {desc = "Indent visual selection, keeping visual selection"})
 
 vim.keymap.set('n', '<leader>gx', '<cmd>!xdg-open %<cr><cr>', {desc = "Open external"})
 vim.keymap.set('n', '<leader>ve', '<cmd>e /home/huntly/.config/nvim/init.lua<CR>', {desc = "Edit conf"})
 vim.keymap.set('n', '<leader>vk', '<cmd>e /home/huntly/.config/nvim/lua/user/keymap.lua<CR>', {desc = "Edit keymaps"})
-
-
--- vim quick wins
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', {desc = "Write"})
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', {desc = "Quit"})
 vim.keymap.set('n', '<leader>c', '<cmd>clo<CR>', {desc = "Close buffer"})
@@ -33,11 +28,20 @@ vim.keymap.set('n', "<C-u>", "<C-u>zz", {desc = "Go up, center screen"})
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv", {desc = "Move visually selected line down"})
 vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv", {desc = "Move visually selected line up"})
 
+vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', {desc = "Next Buffer"})
+vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<CR>', {desc = "Prev Buffer"})
+
+
+vim.keymap.set('n', '<leader>=', '<cmd>Neoformat<CR>', {desc = "Format with Neoformat"})
+
 -- packer
 vim.keymap.set('n', '<leader>ps', '<cmd>PackerSync<CR>', {desc = "Packer sync"})
 
 -- vimtree
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', {desc = "Toggle NvimTree"})
+
+-- lazygit
+vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", {desc = "Lazy Git"})
 
 -- Telescope FTFW
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope git_files<cr>", {desc = "Find files (Git Tracked)"}) -- respects .gitignore
@@ -64,7 +68,6 @@ vim.keymap.set("n", "<leader>gl", "<cmd>Telescope diagnostics<cr>", {desc = "Sho
 
 -- harpoon keymaps
 vim.keymap.set("n", "<leader>hw", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", {desc = "Show harpoon menu"})
--- harpoon add files
 vim.keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", {desc = "Add current file to harpoon list"})
 -- harpoon nav files
 vim.keymap.set("n", "<leader>j", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", {desc = "Go to harpoon file 1"})
